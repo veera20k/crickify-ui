@@ -1,17 +1,21 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation';
+import React from 'react';
 import { useEffect } from 'react';
 
-export default function RouterRefreshClient() {
+const RouterRefreshClient = () => {
   const router = useRouter();
+
   useEffect(() => {
     const intervalId = setInterval(() => {
       router.refresh();
     }, 10000);
+
     return () => clearInterval(intervalId);
-  }, [])
-  return (
-    <></>
-  )
-}
+  }, []);
+
+  return <></>;
+};
+
+export default React.memo(RouterRefreshClient);
