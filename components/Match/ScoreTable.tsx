@@ -19,24 +19,24 @@ export default function ScoreTable({ scoreTable, matchType }: { scoreTable: Scor
     }
   }
   return (
-    <div>
-      {scoreTable.innings?.map((inning) =>
-        <Badge className={`ml-2 my-2 text-xs cursor-pointer hover:bg-red-100 border-red-100 text-red-500 ${selectedBadgeNumbers.includes(inning?.inningNumber) ? 'bg-red-100' : 'bg-red-50'}`} variant='outline' key={inning.inningNumber} onClick={() => handleBadgeClick(inning.inningNumber)} >
+    <div className='page-transition-fadeInUp'>
+      {scoreTable.innings?.map((inning, idx) =>
+        <Badge className={`ml-2 my-2 text-xs cursor-pointer hover:bg-red-100 border-red-100 text-red-500 ${selectedBadgeNumbers.includes(inning?.inningNumber) ? 'bg-red-100' : 'bg-red-50'}`} variant='outline' key={inning.inningNumber || idx} onClick={() => handleBadgeClick(inning.inningNumber)} >
           {inning.team?.name} {isTest && ` - ${inning.inningNumber}`}
           {selectedBadgeNumbers.includes(inning?.inningNumber) && <span className='ml-2'>
             <FaCircleCheck />
           </span>}
         </Badge>
       )}
-      {scoreTable.innings?.map((inning) => (
-        <>
+      {scoreTable.innings?.map((inning, idx) => (
+        <span key={inning.inningNumber || idx}>
           {selectedBadgeNumbers.includes(inning?.inningNumber) &&
-            <div key={inning.inningNumber}>
+            <div key={inning.inningNumber || idx}>
               <h1 className='mt-2 bg-red-200 p-2 rounded-t-lg text-red-700'>{getTableHeaderName(inning, isTest)}</h1>
               <BattingTable batsmen={inning.inningBatsmen} />
               <BowlingTable bowlers={inning.inningBowlers} />
             </div>}
-        </>
+        </span>
       ))}
     </div>
   )
@@ -49,7 +49,7 @@ function BowlingTable({ bowlers }: { bowlers: InningBowler[] }) {
       <thead className='font-bold'>
         <tr>
           {['BOWLER', 'O', 'M', 'R', 'W', 'NB', 'WD', 'EC'].map((heading, index) => (
-            <th key={index} className={`p-2 pl-3 bg-slate-100 ${(heading === 'NB' || heading === 'WD') ? 'max-sm:hidden': '' } ${index === 0 ? 'text-start md:pl-4 ': ''} ${bowCommonClass}`}>{heading}</th>
+            <th key={index} className={`p-2 pl-3 bg-slate-100 ${(heading === 'NB' || heading === 'WD') ? 'max-sm:hidden' : ''} ${index === 0 ? 'text-start md:pl-4 ' : ''} ${bowCommonClass}`}>{heading}</th>
           ))}
         </tr>
       </thead>
@@ -79,7 +79,7 @@ function BattingTable({ batsmen }: { batsmen: InningBatsman[] }) {
       <thead className='font-bold'>
         <tr>
           {['BATTER', '', , 'R', 'B', '4s', '6s', 'SR'].map((heading, index) => (
-            <th key={index} className={`p-2 bg-slate-100 ${index === 1 ? 'max-sm:hidden text-start' : ''}${index === 0 ? 'text-start md:pl-4  ': ''} w-6 md:w-12`}>{heading}</th>
+            <th key={index} className={`p-2 bg-slate-100 ${index === 1 ? 'max-sm:hidden text-start' : ''}${index === 0 ? 'text-start md:pl-4  ' : ''} w-6 md:w-12`}>{heading}</th>
           ))}
         </tr>
       </thead>

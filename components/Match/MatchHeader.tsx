@@ -16,18 +16,6 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
     const [matchDetails, setMatch] = useState<MatchDetails | null>(null);
     const [initialLoaded, setInitialLoaded] = useState(false);
 
-    if (!matchId || !seriesId) {
-        return notFound();
-    }
-
-    const updateTab = (tab: string) => {
-        router.push(`/${matchId}?seriesId=${seriesId}&tab=${tab}`)
-    }
-
-    if (!tab) {
-        updateTab('commentary');
-    }
-
     const fetchMatch = async () => {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/match/${matchId}?seriesId=${seriesId}`);
@@ -50,8 +38,22 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
         const intervalId = setInterval(fetchMatch, 10000);
         return () => clearInterval(intervalId);
     }, [])
+
+    if (!matchId || !seriesId) {
+        return notFound();
+    }
+
+    const updateTab = (tab: string) => {
+        router.push(`/${matchId}?seriesId=${seriesId}&tab=${tab}`)
+    }
+
+    if (!tab) {
+        updateTab('commentary');
+    }
+
+
     return <>
-     {!initialLoaded ? <MainContentSkelton /> : <MatchLiveScoreInfo match={matchDetails?.match} supportInfo={matchDetails?.supportInfo} />}   
+        {!initialLoaded ? <MainContentSkelton /> : <MatchLiveScoreInfo match={matchDetails?.match} supportInfo={matchDetails?.supportInfo} />}
         <Tabs defaultValue={tab} className="mt-2" onValueChange={(triggeredTab) => updateTab(triggeredTab)}>
             <TabsList className="gap-5 flex justify-center">
                 <TabsTrigger value="commentary" className={tabClass}>Commentary</TabsTrigger>
@@ -59,10 +61,10 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
                 <TabsTrigger value="venue" className={tabClass}>Venue</TabsTrigger>
                 <TabsTrigger value="playing11" className={tabClass}>playing 11</TabsTrigger>
             </TabsList>
-            <TabsContent value="commentary"><Commentary /></TabsContent>
-            <TabsContent value="scorecard">{!!matchDetails?.scorecard && <ScoreTable scoreTable={matchDetails?.scorecard} matchType={matchDetails?.match?.format} />}</TabsContent>
-            <TabsContent value="venue">{venueCmp}</TabsContent>
-            <TabsContent value="playing11">{playing11Cmp}</TabsContent>
+            <TabsContent value="commentary" className="lg:w-11/12 mx-auto"><Commentary /></TabsContent>
+            <TabsContent value="scorecard" className="lg:w-11/12 mx-auto">{!!matchDetails?.scorecard && <ScoreTable scoreTable={matchDetails?.scorecard} matchType={matchDetails?.match?.format} />}</TabsContent>
+            <TabsContent value="venue" className="lg:w-11/12 mx-auto">{venueCmp}</TabsContent>
+            <TabsContent value="playing11" className="lg:w-11/12 mx-auto">{playing11Cmp}</TabsContent>
         </Tabs>
     </>
 }
