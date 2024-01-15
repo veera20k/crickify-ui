@@ -2,7 +2,6 @@ import Link from 'next/link';
 import ScoreCard from './ScoreCard/ScoreCard';
 import { MatchInfo } from '@/types/Match';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import RouterRefreshClient from '../Helper/RouterRefreshClient';
 
 const ScoreDashboard = async () => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/match/list`, {
