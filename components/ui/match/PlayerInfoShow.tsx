@@ -31,9 +31,9 @@ export default function PlayerInfoShow({ player, isCurrent, isCaptain }: { isCur
 
       <Dialog >
         <DialogTrigger>
-          <span className="cursor-pointer text-blue-600 inline md:hidden">{player.name} {isCurrent && '*'}</span>
+          <span className="cursor-pointer text-blue-600 block md:hidden overflow-hidden truncate w-32 text-start">{player.name} {isCurrent && '*'}</span>
         </DialogTrigger>
-        <DialogContent className="border-0">
+        <DialogContent className="border-0 bg-transparent">
           <PlayerInfoHoverCardContent player={player} />
         </DialogContent>
       </Dialog>

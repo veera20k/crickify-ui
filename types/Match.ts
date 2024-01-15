@@ -41,24 +41,24 @@ export interface MatchDetails {
   match: MatchInfo;
   supportInfo: SupportInfo;
   recentBallCommentary: {
-    ballComments: []
+    ballComments: Commentary[]
   };
   scorecard: ScoreTable
 }
 
 export interface SupportInfo {
-    liveInfo: LiveInfo;
-    liveSummary: {
-      recentBalls: {
-        id: number;
-        isFour: boolean;
-        isSix: boolean;
-        isWicket: boolean;
-        totalRuns: number;
-        ballNumber: number;
-      }[],
-      batsmen: CurrentPlayerInfo[];
-      bowlers: CurrentPlayerInfo[];
+  liveInfo: LiveInfo;
+  liveSummary: {
+    recentBalls: {
+      id: number;
+      isFour: boolean;
+      isSix: boolean;
+      isWicket: boolean;
+      totalRuns: number;
+      ballNumber: number;
+    }[],
+    batsmen: CurrentPlayerInfo[];
+    bowlers: CurrentPlayerInfo[];
   }
 }
 
@@ -86,28 +86,28 @@ export interface CurrentPlayerInfo {
 }
 
 export interface Player {
-    id: number;
-    name: string;
-    longName: string;
-    imageUrl: string;
-    headshotImageUrl: string;
-    dateOfBirth: {
-      year: number;
-      month: number;
-      date: number;
-    },
-    gender: string;
-    battingStyles: string[];
-    bowlingStyles: string[];
-    longBattingStyles: string[];
-    longBowlingStyles: string[];
-    playingRoles: string[];
-    image: {
-      height: number;
-      width: number;
-      url: string;
-      caption: string;
-    }
+  id: number;
+  name: string;
+  longName: string;
+  imageUrl: string;
+  headshotImageUrl: string;
+  dateOfBirth: {
+    year: number;
+    month: number;
+    date: number;
+  },
+  gender: string;
+  battingStyles: string[];
+  bowlingStyles: string[];
+  longBattingStyles: string[];
+  longBowlingStyles: string[];
+  playingRoles: string[];
+  image: {
+    height: number;
+    width: number;
+    url: string;
+    caption: string;
+  }
 }
 
 export interface ScoreTable {
@@ -115,22 +115,22 @@ export interface ScoreTable {
 }
 
 export interface Inning {
-    inningNumber: number;
-    team: TeamInfo['team'];
-    isBatted: boolean;
-    runs: number;
-    wickets: number;
-    lead: number;
-    target: number;
-    totalOvers: number;
-    balls: number;
-    extras: number;
-    legbyes: number;
-    wides: number;
-    noballs: number;
-    penalties: number;
-    inningBatsmen: InningBatsman[];
-    inningBowlers: InningBowler[];
+  inningNumber: number;
+  team: TeamInfo['team'];
+  isBatted: boolean;
+  runs: number;
+  wickets: number;
+  lead: number;
+  target: number;
+  totalOvers: number;
+  balls: number;
+  extras: number;
+  legbyes: number;
+  wides: number;
+  noballs: number;
+  penalties: number;
+  inningBatsmen: InningBatsman[];
+  inningBowlers: InningBowler[];
 }
 
 export interface InningBatsman {
@@ -189,4 +189,50 @@ export interface InningBowler {
 interface Comment {
   type: string;
   html: string;
+}
+
+export interface Commentary {
+  id: number;
+  inningNumber: number;
+  oversUnique: number;
+  oversActual: number;
+  overNumber: number;
+  ballNumber: number;
+  totalRuns: number;
+  batsmanRuns: number;
+  isFour: boolean;
+  isSix: boolean;
+  isWicket: boolean;
+  dismissalType: null | string;
+  byes: number;
+  legbyes: number;
+  wides: number;
+  noballs: number;
+  penalties: number;
+  wagonX: number;
+  wagonY: number;
+  wagonZone: number;
+  pitchLine: string;
+  pitchLength: string;
+  shotType: string;
+  timestamp: string;
+  modified: string;
+  batsmanPlayerId: number;
+  bowlerPlayerId: number;
+  totalInningRuns: number;
+  totalInningWickets: number;
+  predictions: {
+    score: number;
+    winProbability: number;
+  };
+  title: string;
+  dismissalText: null | string;
+  commentTextItems: {
+    type: string;
+    html: string;
+  }[];
+  commentPostTextItems: {
+    type: string;
+    html: string;
+  }[];
 }

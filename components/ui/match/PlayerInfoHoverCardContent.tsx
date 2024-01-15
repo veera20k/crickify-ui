@@ -7,7 +7,7 @@ export default function PlayerInfoHoverCardContent({ player }: { player: Player 
   const dob = player.dateOfBirth && calculateAge(player.dateOfBirth);
   const imageUrl = (player.headshotImageUrl || player.image?.url) ? (baseImgUrl + (player.headshotImageUrl || player.image?.url)) : '/images/cricket-player.png';
   return (
-    <div className="min-w-48 bg-white border rounded-xl shadow p-4">
+    <div className="min-w-48 mx-auto bg-white border rounded-xl shadow p-4">
       <div className="flex flex-col items-center">
         <Image className='w-24 h-24 mb-3 rounded-full shadow-lg mx-auto' height={player.image?.height || 100} width={player.image?.width || 100} alt='cricket player' src={imageUrl} priority />
         <h5 className="text-xl font-medium text-gray-900">{player.name}</h5>

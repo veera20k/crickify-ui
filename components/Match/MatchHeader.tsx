@@ -59,7 +59,7 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
                 <TabsTrigger value="venue" className={tabClass}>Venue</TabsTrigger>
                 <TabsTrigger value="playing11" className={tabClass}>playing 11</TabsTrigger>
             </TabsList>
-            <TabsContent value="commentary" className="lg:w-11/12 mx-auto"><Commentary /></TabsContent>
+            <TabsContent value="commentary" className="lg:w-11/12 mx-auto"><Commentary commentaries={matchDetails?.recentBallCommentary?.ballComments}/></TabsContent>
             <TabsContent value="scorecard" className="lg:w-11/12 mx-auto">{!!matchDetails?.scorecard && <ScoreTable scoreTable={matchDetails?.scorecard} matchType={matchDetails?.match?.format} />}</TabsContent>
             <TabsContent value="venue" className="lg:w-11/12 mx-auto">{venueCmp}</TabsContent>
             <TabsContent value="playing11" className="lg:w-11/12 mx-auto">{playing11Cmp}</TabsContent>

@@ -87,7 +87,7 @@ function BattingTable({ batsmen }: { batsmen: InningBatsman[] }) {
           <tr key={batsman.player.id || index}>
             <td className={`p-2 pl-3 md:pl-4`}>
               <PlayerInfoShow player={batsman.player} /><br />
-              <span className='text-xs hidden max-sm:inline'>{batsman.dismissalText?.long}</span>
+              <span className='text-xs hidden max-sm:inline '>{batsman.dismissalText?.long}</span>
             </td>
             <td className={`w-6 max-sm:hidden md:w-12`}>{batsman.dismissalText?.long}</td>
             <td className={`w-6 md:w-12 text-center`}>{batsman.runs}</td>

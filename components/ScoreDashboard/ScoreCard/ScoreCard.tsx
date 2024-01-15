@@ -12,7 +12,7 @@ export default function ScoreCard({ match }: { match: MatchInfo }) {
   let matchTitle = match.title + ' , ' + (match.longName || match.series.longName);
   const color = match.badgeColor || randomColor;
   return (
-    <div className={`p-2 border rounded-xl`}>
+    <div className={`p-2 border border-gray-200 rounded-lg shadow-sm bg-white`}>
       <div className='flex items-center'>
         <Badge style={{ backgroundColor: color }} className='text-white font-normal'>{match.format}</Badge>
         <span className='text-xs ml-2 truncate' title={matchTitle}>

@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
 import Image from 'next/image';
 
-const randomColor = getRandomColor();
 const baseImgUrl = 'https://img1.hscicdn.com/image/upload/f_auto,t_ds_wide_w_640,q_50/lsci/';
 export default function NewsCard(props: { news: Article }) {
     const formattedDate = new Date(props.news.publishedAt).toLocaleDateString('en-US', {
@@ -12,6 +11,7 @@ export default function NewsCard(props: { news: Article }) {
         day: 'numeric',
         year: 'numeric',
     });
+    const randomColor = getRandomColor();
     return (
         <Link href={`/news/${props.news.id}`}>
             <div className="max-w-sm md:max-w-xs border border-gray-200 rounded-xl cursor-pointer hover:bg-slate-100">
