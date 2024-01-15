@@ -17,8 +17,8 @@ export default function PlayerInfoShow({ player, isCurrent, isCaptain }: { isCur
     <>
       <HoverCard.Root openDelay={0} closeDelay={0}>
         <HoverCard.Trigger asChild>
-          <span className="cursor-pointer text-blue-600 hidden md:inline">{player.name} {isCurrent && '*'} 
-          <span className="text-xs">{isCaptain && '(C)'}</span>
+          <span className="cursor-pointer text-blue-600 hidden md:inline">{player.name} {isCurrent && '*'}
+            <span className="text-xs">{isCaptain && '(C)'}</span>
           </span>
         </HoverCard.Trigger>
         <HoverCard.Portal>

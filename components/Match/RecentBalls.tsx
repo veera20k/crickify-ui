@@ -5,7 +5,7 @@ interface RecentBallsProps {
   supportInfo?: SupportInfo;
 }
 
-const RecentBalls: React.FC<RecentBallsProps> = ({ supportInfo }) => {
+function RecentBalls({ supportInfo }: RecentBallsProps) {
   if (!supportInfo || !supportInfo?.liveSummary) {
     return <></>;
   }
@@ -15,16 +15,17 @@ const RecentBalls: React.FC<RecentBallsProps> = ({ supportInfo }) => {
 
   return (
     <>
-    {!!slicedBalls.length && <div className='flex justify-center mt-2'>
-      Recent:
-      {slicedBalls.map((ball) => (
-        <span key={ball.id} className={`ml-1 ${!!ball.isWicket && 'text-red-500 underline'}`}>
-          {ball.isWicket ? 'W': ball.totalRuns} {ball.ballNumber === 6 && ' | '}
-        </span>
-      ))}
-    </div>}
+      {!!slicedBalls.length &&
+        <div className='flex justify-center mt-2'>
+          Recent:
+          {slicedBalls.map((ball) => (
+            <span key={ball.id} className={`ml-1 ${!!ball.isWicket && 'text-red-500 underline'}`}>
+              {ball.isWicket ? 'W' : ball.totalRuns} {ball.ballNumber === 6 && ' | '}
+            </span>
+          ))}
+        </div>}
     </>
   );
-};
+}
 
 export default RecentBalls;

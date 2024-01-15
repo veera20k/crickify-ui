@@ -13,8 +13,3 @@ export interface Article {
     };
     language: string;
   }
-
-
-  export interface singleArticle {
-    
-  }

@@ -1,9 +1,10 @@
 import { getRandomColor } from '@/lib/utils';
 import { Article } from '@/types/News'
-import Image from 'next/image';
-import { Badge } from '../ui/badge';
+import { Badge } from "@/components/ui/badge";
 import Link from 'next/link';
+import Image from 'next/image';
 
+const randomColor = getRandomColor();
 export default function NewsCard(props: { news: Article }) {
     const baseImgUrl = 'https://img1.hscicdn.com/image/upload/f_auto,t_ds_wide_w_640,q_50/lsci/';
     const formattedDate = new Date(props.news.publishedAt).toLocaleDateString('en-US', {
@@ -11,13 +12,11 @@ export default function NewsCard(props: { news: Article }) {
         day: 'numeric',
         year: 'numeric',
     });
-    const randomColor = getRandomColor();
     return (
         <Link href={`/news/${props.news.id}`}>
          <div className="max-w-sm md:max-w-xs border border-gray-200 rounded-xl cursor-pointer hover:bg-slate-100">
             <div className="p-4" >
-                <Image className='rounded-xl' height={props.news.image.height} width={props.news.image.width} src={baseImgUrl + props.news.image.url} alt="" 
-                />
+                <Image className='rounded-xl' height={props.news.image.height} width={props.news.image.width} src={baseImgUrl + props.news.image.url} alt="News Image" />
             </div>
             <div className="px-5 pt-1 py-5">
             <Badge style={{ color: randomColor }} className='bg-blue-50 mb-2'>{props.news.genreType}</Badge>

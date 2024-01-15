@@ -20,7 +20,6 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/match/${matchId}?seriesId=${seriesId}`);
             if (!response.ok) {
-                console.error('Failed to fetch data');
                 return;
             }
             const data: MatchDetails = await response.json();
@@ -50,7 +49,6 @@ export default function MatchHeader(props: { matchId: string, seriesId: string, 
     if (!tab) {
         updateTab('commentary');
     }
-
 
     return <>
         {!initialLoaded ? <MainContentSkelton /> : <MatchLiveScoreInfo match={matchDetails?.match} supportInfo={matchDetails?.supportInfo} />}

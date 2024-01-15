@@ -1,4 +1,3 @@
-import React from 'react'
 import NewsCard from '@/components/News/NewsCard';
 import { Article } from '@/types/News';
 

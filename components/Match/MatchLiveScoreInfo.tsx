@@ -1,4 +1,3 @@
-import React from 'react'
 import { MatchInfo, SupportInfo } from '@/types/Match'
 import RecentBalls from './RecentBalls'
 import CurrentDuoTable from './CurrentDuoTable'

@@ -6,7 +6,6 @@ import { Badge } from '../ui/badge';
 import { useState } from 'react';
 import { FaCircleCheck } from "react-icons/fa6";
 
-
 export default function ScoreTable({ scoreTable, matchType }: { scoreTable: ScoreTable, matchType: string }) {
   const isTest = matchType === 'TEST';
   const [selectedBadgeNumbers, setSelectedBadgeNumbers] = useState<number[]>([1]);
@@ -103,7 +102,7 @@ function BattingTable({ batsmen }: { batsmen: InningBatsman[] }) {
   </div>
 }
 
-const getTableHeaderName = (inning: Inning, isTest?: boolean) => {
+function getTableHeaderName(inning: Inning, isTest?: boolean) {
   const teamName = inning.team.name;
   const innNum = inning.inningNumber;
   if (!isTest || [1, 3, 2, 4].includes(innNum)) {

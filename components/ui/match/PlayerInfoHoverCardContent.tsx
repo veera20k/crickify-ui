@@ -1,4 +1,3 @@
-import React from 'react'
 import Image from 'next/image';
 import { Player } from '@/types/Match';
 import { calculateAge } from '@/lib/utils';

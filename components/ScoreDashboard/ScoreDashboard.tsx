@@ -23,13 +23,10 @@ const ScoreDashboard = async () => {
                     <Cards matches={matches.others} />
                 </TabsContent>
             </Tabs>
-            <RouterRefreshClient />
+            {/* <RouterRefreshClient /> */}
         </>
     );
 };
-
-export default ScoreDashboard;
-
 
 function Cards({ matches }: { matches: MatchInfo[] }) {
     return <>
@@ -39,3 +36,5 @@ function Cards({ matches }: { matches: MatchInfo[] }) {
             </Link>
         ))}</>;
 }
+
+export default ScoreDashboard;

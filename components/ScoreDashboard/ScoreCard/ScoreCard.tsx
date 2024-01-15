@@ -1,8 +1,7 @@
 import { MatchInfo } from '@/types/Match'
 import { Badge } from "@/components/ui/badge"
-import Image from 'next/image';
 import { getRandomColor } from '@/lib/utils';
-import styles from './sample.module.css'
+import Image from 'next/image';
 
 const randomColor = getRandomColor();
 const baseImgUrl = 'https://img1.hscicdn.com/image/upload/f_auto,t_ds_square_w_160,q_50/lsci/';
