@@ -12,7 +12,7 @@ const ScoreDashboard = async () => {
     return (
         <>
             <Tabs defaultValue={'forYou'} className="w-full">
-                <TabsList className="gap-5 flex justify-center bg-transparent">
+                <TabsList className="gap-5 flex justify-center">
                     <TabsTrigger value="forYou" className='cursor-pointer data-[state=active]:border-b-2 data-[state=active]:border-green-500 text-black text-md'>For You</TabsTrigger>
                     <TabsTrigger value="more" className='cursor-pointer data-[state=active]:border-b-2 data-[state=active]:border-green-500 text-black text-md'>More</TabsTrigger>
                 </TabsList>

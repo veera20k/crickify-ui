@@ -3,8 +3,8 @@
 import { Commentary } from "@/types/Match"
 
 export default function Commentary({ commentaries }: { commentaries?: Commentary[] }) {
-  if (!commentaries) {
-    return <>Commentary Not Available</>;
+  if (!commentaries?.length) {
+    return <></>;
   }
   return (
     <div>
